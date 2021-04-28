@@ -10,7 +10,7 @@ const useFetch = ({setDiaries,url}) => {
 
     useEffect(()=>{
         getDiaries()
-    },[])
+    },[url])
 }
 
 export default useFetch
