@@ -46,7 +46,7 @@ const Update = ({diaries,setDiaries,url}) => {
             'last_modification':newDiary.last_modification,
         }
         updateDiary(newObj)
-        alert('Update Complete. Refresh the page.');
+        alert('Update Complete.');
     }
 
     return (
