@@ -19,6 +19,21 @@ const Add = ({diaries,setDiaries,url}) => {
         
     }
 
+    //assync post type and setting setDiaries
+    const addDiary = async(diary)=>{
+        const res = await fetch(url,{
+            method:'POST',
+            headers:{
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(diary),
+        })
+        const data = await res.json()
+        setDiaries([...diaries,data]);
+    }
+
+
+    //submittion
     const onsubmit =(e)=>{
         e.preventDefault();
          const id = Math.floor(Math.random()*10000)+1;
@@ -32,20 +47,7 @@ const Add = ({diaries,setDiaries,url}) => {
             'thought':newDiary.thought,
             'last_modification':newDiary.last_modification,
         }
-        
-        const addDiary = async()=>{
-            const res = await fetch(url,{
-                method:'POST',
-                headers:{
-                    'Content-type':'application/json'
-                },
-                body: JSON.stringify(newObj)
-            });
-            const data = res.json()
-            setDiaries([...diaries,data]);
-        }
-        addDiary()
-        
+        addDiary(newObj)
         alert('add Complete');
     }
 
